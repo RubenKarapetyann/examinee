@@ -1,0 +1,104 @@
+import os
+from PyPDF2 import PdfReader
+import re 
+from constants import trash_patterns, section_3_answers
+import json
+import random
+
+path_1 = os.getcwd()+"/repositories/rep_1.pdf"
+path_2 = os.getcwd()+"/repositories/rep_2.pdf"
+path_3 = os.getcwd()+"/repositories/rep_3.pdf"
+    
+    
+def clear_text(text):
+    cleared_text = text
+    for i in trash_patterns:
+        cleared_text = re.sub(i, "", cleared_text)
+                
+    return cleared_text
+
+
+def get_text_by_pages(path, start, end):
+    with open(path, 'rb') as f:
+        engine = start
+        pages = []
+        pdf = PdfReader(f)
+        
+        while engine < end:
+            page = pdf.pages[engine]
+            pages.append(page.extract_text().strip())
+            engine += 1
+        
+
+        return " ".join(pages)
+
+    
+def get_answers_by_page(path, page):
+    with open(path, 'rb') as f:
+        pdf = PdfReader(f)
+        current_page = pdf.pages[page]
+        print(current_page.extract_text())
+        
+
+def tasks_list_from_text(text):
+    cleared = clear_text(text)
+    tasks_list = []
+    reg = re.compile(r"([0-9]+\.)((.+|\n)*?)(a\).+)\n(b\).+)\n(c\).+)\n(d\).+)\n")
+    tasks_list = reg.findall(cleared)
+
+    return tasks_list
+
+
+def cut_answers(text):
+    rep = re.compile(r"[0-9]+\w")
+    return rep.findall(text)
+
+
+def cut_task(task, rep):
+    answers = cut_answers(section_3_answers[rep])
+    number = int(task[0][:-1])
+    finished_task = {
+        "number" : number,
+        "text" : task[1],
+        "variants" : list(task)[3:6],
+        "id" : random.random(),
+        "repository" : rep,
+        "correct_answer" : answers[number-1][len(answers[number-1])-1]
+    }
+    return finished_task
+    
+def cut_tasks_list(list, rep):
+    return [cut_task(i, rep) for i in list]
+
+tasks1 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_1, 111, 162)), "1")
+tasks2 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_2, 107, 168)), "2")
+tasks3 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_3, 82, 142)), "3")
+
+tasks = tasks1 + tasks2 + tasks3
+translated_to_json = json.dumps(tasks)
+
+# get_answers_by_page(path_3, 294)
+# print(cut_answers(section_3_answers["3"]))
+
+f = open(os.getcwd()+"/output/sec_3.json", "w", encoding="utf-8")
+f.write(translated_to_json)
+f.close()
+
+# f = open(os.getcwd()+"/output/sec_3.txt", "w", encoding="utf-8")
+# f.write()
+# f.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
