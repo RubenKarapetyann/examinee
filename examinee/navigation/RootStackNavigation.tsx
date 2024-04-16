@@ -17,8 +17,6 @@ export default function RootStackNavigation(){
                 },
                 headerStyle : {
                     height : 100,
-                    justifyContent : "center",
-                    alignItems : "center"
                 }
             }}/>
             <RootStack.Screen name="Section_3" component={Section_3}/>

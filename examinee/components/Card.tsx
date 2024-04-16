@@ -2,10 +2,11 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { PALETTE } from "../constants/styles";
 import { CardProps } from "../types/components";
 
-export default function Card({ title }:CardProps){
+export default function Card({ title, id, onOpen, route }:CardProps){
+    const openHanle = ()=> onOpen(route)
     return (
         <View>
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity style={styles.container} onPress={openHanle}>
                 <Text style={styles.title}>{title}</Text>
             </TouchableOpacity>
         </View>
