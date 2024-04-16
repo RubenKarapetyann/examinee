@@ -8,7 +8,19 @@ const RootStack = createStackNavigator<RootStackParamList>()
 export default function RootStackNavigation(){
     return (
         <RootStack.Navigator initialRouteName="Manu">
-            <RootStack.Screen name="Manu" component={Manu}/>
+            <RootStack.Screen name="Manu" component={Manu} options={{ 
+                title: 'SECTIONS',
+                headerTitleAlign : "center",
+                headerTitleStyle : {
+                    fontSize : 50,
+                    fontWeight : "bold",
+                },
+                headerStyle : {
+                    height : 100,
+                    justifyContent : "center",
+                    alignItems : "center"
+                }
+            }}/>
             <RootStack.Screen name="Section_3" component={Section_3}/>
         </RootStack.Navigator>
     )
