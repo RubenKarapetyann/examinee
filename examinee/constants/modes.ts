@@ -1,14 +1,17 @@
 import { DropdownItem } from "../types/global";
 
+export const RANDOM_MODE = "random"
+export const PROGRESS_MODE = "progress"
+
 export const MODES: DropdownItem[] = [
     {
-        name : "random",
+        name : RANDOM_MODE,
         id : "1",
-        mode : "random"
+        mode : RANDOM_MODE
     },
     {
-        name : "progress",
+        name : PROGRESS_MODE,
         id : "2",
-        mode : "progress"
+        mode : PROGRESS_MODE
     }
 ]

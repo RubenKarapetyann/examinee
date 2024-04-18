@@ -19,7 +19,9 @@ export default function RootStackNavigation(){
                     height : 100,
                 }
             }}/>
-            <RootStack.Screen name="Section_3" component={Section_3}/>
+            <RootStack.Screen name="Section_3" component={Section_3} options={{
+                title : "Section 3"
+            }}/>
         </RootStack.Navigator>
     )
 }
