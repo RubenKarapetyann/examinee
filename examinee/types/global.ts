@@ -11,3 +11,19 @@ export type CardItem = {
     route : SectionRoute,
 }
 export type ModeType = "random" | "progress"
+export type ChooseExerciseType = {
+    id : string,
+    number: number,
+    text : string,
+    variants : Variant[],
+    repository : number,
+    correct_answer : string
+}
+export type Variant = {
+    text : string,
+    id : string,
+    variant : string
+}
+export type GoToNextButtonProps = {
+    onGoToNext : ()=> void
+}
