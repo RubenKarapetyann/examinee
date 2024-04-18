@@ -4,6 +4,7 @@ import re
 from constants import trash_patterns, section_3_answers
 import json
 import random
+import uuid
 
 path_1 = os.getcwd()+"/repositories/rep_1.pdf"
 path_2 = os.getcwd()+"/repositories/rep_2.pdf"
@@ -43,7 +44,7 @@ def get_answers_by_page(path, page):
 def tasks_list_from_text(text):
     cleared = clear_text(text)
     tasks_list = []
-    reg = re.compile(r"([0-9]+\.)((.+|\n)*?)(a\).+)\n(b\).+)\n(c\).+)\n(d\).+)\n")
+    reg = re.compile(r"([0-9]+\.)((.+|\n)*?)(a\).+)\n(b\).+)\n(c\).+)\n(d\).+)")
     tasks_list = reg.findall(cleared)
 
     return tasks_list
@@ -60,9 +61,13 @@ def cut_task(task, rep):
     finished_task = {
         "number" : number,
         "text" : task[1],
-        "variants" : list(task)[3:6],
-        "id" : random.random(),
-        "repository" : rep,
+        "variants" : [{
+                "text" : i.strip()[2:].strip(),
+                "variant" : i.strip()[0],
+                "id" : str(uuid.uuid4())
+            } for i in list(task)[3:7]],
+        "id" : str(uuid.uuid4()),
+        "repository" : int(rep),
         "correct_answer" : answers[number-1][len(answers[number-1])-1]
     }
     return finished_task
