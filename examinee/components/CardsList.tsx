@@ -2,12 +2,12 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import { CardsListProps } from "../types/components";
 import Card from "./Card";
 
-export default function CardsList({ cards, onOpen }: CardsListProps){
+export default function CardsList({ cards, onOpen, sections }: CardsListProps){
     return (
         <ScrollView>
             <View style={styles.container}>
                 {cards.map(card=>{
-                    return <Card route={card.route} title={card.title} id={card.id} key={card.id} onOpen={onOpen}/>
+                    return <Card tasksCount={card.tasksCount} section={sections[card.name]} route={card.route} title={card.title} id={card.id} key={card.id} onOpen={onOpen}/>
                 })}
             </View>
         </ScrollView>
