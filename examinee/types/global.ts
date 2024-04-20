@@ -9,6 +9,8 @@ export type CardItem = {
     title : string,
     id : string,
     route : SectionRoute,
+    name : string,
+    tasksCount: number
 }
 export type ModeType = "random" | "progress"
 export type ChooseExerciseType = {
@@ -26,4 +28,7 @@ export type Variant = {
 }
 export type GoToNextButtonProps = {
     onGoToNext : ()=> void
+}
+export type SectionInfoType = {
+    reachedNumber : number
 }
