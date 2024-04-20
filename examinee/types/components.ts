@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import { CardItem, ChooseExerciseType, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant, statsType } from "./global"
+import { CardItem, ChooseExerciseType, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant, StatsType } from "./global"
 import { RootStackParamList } from "./navigation"
 import { ReactNode } from "react"
 
@@ -54,7 +54,7 @@ export type ChooseProps = {
     exercise : ChooseExerciseType,
     sectionData : SectionInfoType,
     mode : ModeType,
-    stats : statsType,
+    stats : StatsType,
     answered : false | string,
     onChoose : (variant: string)=> void
 }

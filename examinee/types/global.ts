@@ -32,7 +32,7 @@ export type GoToNextButtonProps = {
 export type SectionInfoType = {
     reachedNumber : number
 }
-export type statsType = {
+export type StatsType = {
     count : number,
     combo : number
 }
