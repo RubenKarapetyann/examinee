@@ -4,6 +4,7 @@ export type DropdownItem = {
     mode : ModeType
 }
 export type SectionRoute = "Section_3" | "Section_5"
+export type SectionNames = "section3" | "section5"
 
 export type CardItem = {
     title : string,
