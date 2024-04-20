@@ -1,4 +1,4 @@
-trash_patterns = ["""Section 3  
+trash_patterns_3 = ["""Section 3  
  
 112 SECTION 3 
  
@@ -7,6 +7,11 @@ Choose the appropriate option. """, "www.atc.am", "Section 3", "Section  3", """
  
 ÀÝïñ»É Ý³Ë³¹³ëá õÃÛ³Ý µáí³Ý¹³ÏáõÃÛ³ÝÁ Ñ³Ù³å³ï³ëË³ÝáÕ ï³ñµ»ñ³ÏÁ:  
 Choose the appropriate option.  """]
+
+trash_patterns_5 = ["""SECTION 5
+
+ÀÝïñ»É Ý³Ë³¹³ëáõÃÛ³Ý µáí³Ý¹³ÏáõÃÛ³ÝÁ Ñ³Ù³å³ï³ëË³ÝáÕ ï³ñµ»ñ³ÏÁ:
+Choose the rig ht option.""","Section 5", "www.atc.am"]
 
 section_3_1_answers = """1d 2d 3d 4b 5d 6b 7b 8d 9a 10d
 11c 12a 13a 14d 15d 16b 17c 18d 19c 20c
@@ -106,4 +111,61 @@ section_3_answers = {
     "1" : section_3_1_answers,
     "2" : section_3_2_answers,
     "3" : section_3_3_answers
+}
+
+section_5_1_answers = """1a 2b 3a 4b 5a 6a 7a 8a 9b 10d
+11a 12a 13a 14a 15d 16a 17a 18d 19c 20a
+21a 22a 23a 24b 25a 26c 27a 28b 29b 30d
+31d 32d 33d 34a 35b 36c 37b 38c 39d 40c
+41a 42c 43a 44b 45c 46a 47c 48a 49c 50c
+51a 52c 53d 54c 55d 56d 57b 58a 59b 60b
+61b 62a 63b 64c 65a 66b 67b 68c 69a 70b
+71d 72c 73a 74d 75a 76b 77d 78b 79c 80d
+81d 82a 83a 84d 85d 86a 87b 88c 89b 90c
+91d 92a 93d 94b 95c 96a 97b 98b 99a 100a
+101c  102b  103b  104a  105d  106b  107a  108a  109c  110c
+111b  112b  113a  114a  115a  116a  117a  118d  119c  120d
+121a  122c  123c  124b  125a  126b  127a  128d  129b  130a
+131c  132b  133a  134b  135d  136d  137b  138b  139a  140d
+141a  142c  143a  144d  145b  146c  147b  148d  149c  150a
+151c  152a  153a  154a  155a  156a  157b  158d  159b  160c"""
+
+section_5_2_answers = """1d 2a 3c 4d 5d 6c 7b 8c 9b 10d
+11b 12a 13b 14c 15d 16c 17d 18a 19c 20b
+21c 22c 23c 24a 25d 26d 27a 28c 29b 30c
+31a 32a 33c 34d 35b 36c 37a 38a 39b 40c
+41a 42a 43b 44a 45c 46a 47d 48a 49c 50c
+51a 52b 53a 54a 55d 56a 57b 58d 59d 60b
+61c 62d 63b 64a 65c 66b 67b 68b 69b 70a
+71c 72d 73b 74a 75c 76a 77c 78a 79a 80b
+81c 82a 83b 84a 85d 86a 87d 88b 89b 90a
+91b 92a 93a 94d 95c 96d 97a 98a 99d 100b
+101d  102b  103c  104a  105c  106c  107d  108d  109c  110d
+111d  112c  113a  114c  115b  116b  117c  118b  119c  120c
+121d  122c  123d  124d  125b  126d  127a  128c  129c  130b
+131a  132a  133c  134d  135a  136a  137a  138d  139b  140d
+141a  142d  143a  144a  145d  146b  147d  148d  149c  150d
+151b  152a  153c  154d  155a  156b  157d  158c  159d  160b"""
+
+section_5_3_answers = """1b 2a 3c 4c 5a 6b 7c 8a 9c 10c
+11d 12b 13b 14d 15c 16b 17a 18c 19b 20b
+21d 22c 23a 24d 25b 26b 27a 28a 29d 30a
+31b 32c 33d 34b 35c 36a 37d 38b 39c 40b
+41b 42c 43a 44d 45a 46c 47b 48c 49a 50d
+51c 52a 53b 54d 55d 56c 57a 58c 59c 60a
+61d 62b 63c 64a 65a 66d 67c 68b 69c 70c
+71b 72d 73b 74d 75c 76b 77b 78d 79d 80b
+81c 82c 83d 84a 85b 86a 87c 88a 89b 90c
+91a 92b 93a 94d 95d 96a 97b 98b 99b 100b
+101a  102b  103b  104d  105a  106c  107b  108a  109d  110c
+111d  112c  113b  114b  115b  116d  117a  118b  119b  120d
+121a  122b  123c  124d  125c  126d  127c  128a  129d  130d
+131b  132d  133b  134a  135b  136a  137b  138a  139d  140a
+141b  142d  143b  144d  145b  146c  147b  148d  149c  150a
+151d  152a  153d  154b  155c  156a  157b  158c  159b  160a"""
+
+section_5_answers = {
+    "1" : section_5_1_answers,
+    "2" : section_5_2_answers,
+    "3" : section_5_3_answers
 }

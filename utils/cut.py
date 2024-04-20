@@ -1,7 +1,7 @@
 import os
 from PyPDF2 import PdfReader
 import re 
-from constants import trash_patterns, section_3_answers
+from constants import trash_patterns_5, section_3_answers, section_5_answers
 import json
 import random
 import uuid
@@ -13,7 +13,7 @@ path_3 = os.getcwd()+"/repositories/rep_3.pdf"
     
 def clear_text(text):
     cleared_text = text
-    for i in trash_patterns:
+    for i in trash_patterns_5:
         cleared_text = re.sub(i, "", cleared_text)
                 
     return cleared_text
@@ -56,7 +56,7 @@ def cut_answers(text):
 
 
 def cut_task(task, rep):
-    answers = cut_answers(section_3_answers[rep])
+    answers = cut_answers(section_5_answers[rep])
     number = int(task[0][:-1])
     finished_task = {
         "number" : number,
@@ -75,9 +75,15 @@ def cut_task(task, rep):
 def cut_tasks_list(list, rep):
     return [cut_task(i, rep) for i in list]
 
-tasks1 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_1, 111, 162)), "1")
-tasks2 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_2, 107, 168)), "2")
-tasks3 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_3, 82, 142)), "3")
+#section 3
+# tasks1 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_1, 111, 162)), "1")
+# tasks2 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_2, 107, 168)), "2")
+# tasks3 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_3, 82, 142)), "3")
+
+#section 5
+tasks1 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_1, 176, 201)), "1")
+tasks2 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_2, 183, 215)), "2")
+tasks3 = cut_tasks_list(tasks_list_from_text(get_text_by_pages(path_3, 152, 181)), "3")
 
 tasks = tasks1 + tasks2 + tasks3
 translated_to_json = json.dumps(tasks)
@@ -85,9 +91,9 @@ translated_to_json = json.dumps(tasks)
 # get_answers_by_page(path_3, 294)
 # print(cut_answers(section_3_answers["3"]))
 
-f = open(os.getcwd()+"/output/sec_3.json", "w", encoding="utf-8")
-f.write(translated_to_json)
-f.close()
+# f = open(os.getcwd()+"/output/sec_3.json", "w", encoding="utf-8")
+# f.write(translated_to_json)
+# f.close()
 
 # f = open(os.getcwd()+"/output/sec_3.txt", "w", encoding="utf-8")
 # f.write()
@@ -95,15 +101,17 @@ f.close()
 
 
 
+f = open(os.getcwd()+"/output/sec_5.json", "w", encoding="utf-8")
+f.write(translated_to_json)
+f.close()
+
+# f = open(os.getcwd()+"/output/sec_5.txt", "w", encoding="utf-8")
+# f.write(translated_to_json)
+# f.close()
 
 
 
-
-
-
-
-
-
-
+# answer cutting
+# print(get_text_by_pages(path_2, 328, 329))
 
 
