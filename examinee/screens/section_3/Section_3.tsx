@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Section_3Types } from "../../types/components";
-import Form from "../../components/Form";
 import data from "../../data/section_3.json"
 import { useEffect, useRef, useState } from "react";
-import { ChooseExerciseType, SectionInfoType } from "../../types/global";
+import { ChooseExerciseType, SectionInfoType, statsType } from "../../types/global";
 import GoToNextButton from "../../components/GoToNextButton";
 import { PROGRESS_MODE, RANDOM_MODE } from "../../constants/modes";
 import { getRandomInt } from "../../utils/global";
 import { setItem } from "../../utils/storage";
 import { SEC_3 } from "../../constants/sections";
 import { useSections } from "../../contexts/SectionsProvider";
+import Choose from "../../components/Choose";
 
 export default function Section_3({ navigation, route }: Section_3Types){    
     const exercises: ChooseExerciseType[] = data
@@ -21,7 +21,7 @@ export default function Section_3({ navigation, route }: Section_3Types){
     const sectionData = sectionsData[SEC_3] ? sectionsData[SEC_3] : {reachedNumber : 0}
     const [currentExercise, setCurrentExercise] = useState(route.params.mode === RANDOM_MODE ? exercises[getRandomInt(0,900)] : exercises[sectionData.reachedNumber])
     const [answered, setAnswered] = useState<false | string>(false)
-    const statsRef = useRef({combo : 0, count: 0}).current
+    const statsRef = useRef<statsType>({combo : 0, count: 0}).current
     
 
     useEffect(()=>{
@@ -38,6 +38,11 @@ export default function Section_3({ navigation, route }: Section_3Types){
 
     const onChoose = (variant: string)=>{
         statsRef.count++
+        if(variant === currentExercise.correct_answer){
+            statsRef.combo++
+        }else{
+            statsRef.combo = 0
+        }
         setAnswered(variant)
         if(route.params.mode === PROGRESS_MODE && sectionData.reachedNumber <= 900){
             changeSectionsData(SEC_3, {...sectionData, reachedNumber: sectionData.reachedNumber+1})
@@ -53,21 +58,17 @@ export default function Section_3({ navigation, route }: Section_3Types){
 
     return (
         <>
-            <Text>{route.params.mode === PROGRESS_MODE ? "level: " : "count: "}{route.params.mode === PROGRESS_MODE ? sectionData.reachedNumber : statsRef.count}</Text>
-            <View>
-                <Text>repository: {currentExercise.repository}</Text>
-                <Text>exercise: {currentExercise.number}</Text>
-            </View>
+            <Choose
+                exercise={currentExercise}  
+                sectionData={sectionData}  
+                mode={route.params.mode}
+                stats={statsRef}
+                answered={answered}
+                onChoose={onChoose}
+            />
             {answered && <View style={styles.goToNextButtonBackground}>
                 <GoToNextButton onGoToNext={onGoToNext}/>
             </View>}
-            <Form 
-                text={currentExercise.text} 
-                variants={currentExercise.variants} 
-                onChoose={onChoose}
-                correctAnswer={currentExercise.correct_answer}
-                answered={answered}
-            />
         </>
     )
 } 

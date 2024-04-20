@@ -3,7 +3,7 @@ export type DropdownItem = {
     id : string,
     mode : ModeType
 }
-export type SectionRoute = "Section_3"
+export type SectionRoute = "Section_3" | "Section_5"
 
 export type CardItem = {
     title : string,
@@ -31,4 +31,8 @@ export type GoToNextButtonProps = {
 }
 export type SectionInfoType = {
     reachedNumber : number
+}
+export type statsType = {
+    count : number,
+    combo : number
 }

@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import { CardItem, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant } from "./global"
+import { CardItem, ChooseExerciseType, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant, statsType } from "./global"
 import { RootStackParamList } from "./navigation"
 import { ReactNode } from "react"
 
@@ -38,7 +38,6 @@ export type VariantProps = {
     answered: false | string
 }
 export type FormProps = {
-    text : string,
     variants : Variant[],
     onChoose : (variant: string)=> void,
     correctAnswer : string,
@@ -50,4 +49,12 @@ export type LoadingBarProps = {
 }
 export type SectionsProviderProps = {
     children : ReactNode
+}
+export type ChooseProps = {
+    exercise : ChooseExerciseType,
+    sectionData : SectionInfoType,
+    mode : ModeType,
+    stats : statsType,
+    answered : false | string,
+    onChoose : (variant: string)=> void
 }
