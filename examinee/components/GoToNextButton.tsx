@@ -5,7 +5,7 @@ import { GoToNextButtonProps } from "../types/global";
 
 export default function GoToNextButton({ onGoToNext }: GoToNextButtonProps){
     return (
-        <View>
+        <View style={styles.goToNextButtonBackground}>
             <TouchableOpacity style={styles.button} onPress={onGoToNext}>
                 <Icon name="arrow-right" size={70} color={"white"}/>
             </TouchableOpacity>
@@ -21,5 +21,15 @@ const styles = StyleSheet.create({
         width : 100,
         justifyContent : "center",
         alignItems : "center"
+    },
+    goToNextButtonBackground : {
+        width : "100%",
+        height : "100%",
+        position : "absolute",
+        backgroundColor : "rgba(0, 0, 0, 0.1)",
+        zIndex : 2,
+        alignItems : "center",
+        justifyContent : "flex-end",
+        padding : 50
     }
 })

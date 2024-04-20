@@ -22,22 +22,7 @@ export default function Section_3({ navigation, route }: Section_3Types){
                 answered={answered}
                 onChoose={onChoose}
             />
-            {answered && <View style={styles.goToNextButtonBackground}>
-                <GoToNextButton onGoToNext={onGoToNext}/>
-            </View>}
+            {answered && <GoToNextButton onGoToNext={onGoToNext}/>}
         </>
     )
 } 
-
-const styles = StyleSheet.create({
-    goToNextButtonBackground : {
-        width : "100%",
-        height : "100%",
-        position : "absolute",
-        backgroundColor : "rgba(0, 0, 0, 0.1)",
-        zIndex : 2,
-        alignItems : "center",
-        justifyContent : "flex-end",
-        padding : 50
-    }
-})
