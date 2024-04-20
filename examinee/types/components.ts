@@ -1,16 +1,20 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import { CardItem, DropdownItem, ModeType, SectionRoute, Variant } from "./global"
+import { CardItem, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant } from "./global"
 import { RootStackParamList } from "./navigation"
+import { ReactNode } from "react"
 
 export type CardProps = {
     title : string,
     id : string,
     route : SectionRoute,
-    onOpen : (route: SectionRoute)=>void
+    onOpen : (route: SectionRoute)=>void,
+    section : SectionInfoType | undefined,
+    tasksCount : number
 }
 export type CardsListProps = {
     cards : CardItem[],
-    onOpen : (route: SectionRoute)=>void
+    onOpen : (route: SectionRoute)=>void,
+    sections : Record<string, SectionInfoType>
 }
 export type DropdownProps = {
     items : DropdownItem[],
@@ -33,11 +37,17 @@ export type VariantProps = {
     correctAnswer : string,
     answered: false | string
 }
-
 export type FormProps = {
     text : string,
     variants : Variant[],
     onChoose : (variant: string)=> void,
     correctAnswer : string,
     answered: false | string
+}
+export type LoadingBarProps = {
+    max : number,
+    reached : number
+}
+export type SectionsProviderProps = {
+    children : ReactNode
 }
