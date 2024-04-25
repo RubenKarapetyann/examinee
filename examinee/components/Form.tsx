@@ -23,8 +23,9 @@ export default function Form({ variants, onChoose, correctAnswer, answered }: Fo
 
 const styles = StyleSheet.create({
     container : {
-        padding : 10,
+        paddingTop : 15,
         justifyContent : "center",
+        width : "100%"
     },
     variantsList : {
         gap : 10

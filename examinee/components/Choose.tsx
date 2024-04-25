@@ -9,7 +9,7 @@ export default function Choose({exercise, sectionData, mode, stats, answered, on
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.level}>{mode === PROGRESS_MODE ? `LEVEL ${sectionData.reachedNumber}` : "RANDOM"}</Text>
+                <Text style={styles.level}>{mode === PROGRESS_MODE ? `LEVEL ${sectionData.reachedNumber+1}` : "RANDOM"}</Text>
                 <View style={styles.stats}>
                     <View>
                         <View style={styles.statsRow}><Text>combo🔥:  </Text><Text style={styles.statsNumber}>{stats.combo}</Text></View>
@@ -43,13 +43,15 @@ const styles = StyleSheet.create({
     },
     header : {  
         width : "100%",
-        height : 80,
+        height : 85,
         backgroundColor : PALETTE.background,
-        alignItems : "center"
+        alignItems : "center",
+        justifyContent : "center"
     },
     level : {
         fontSize : 22,
-        fontWeight : "bold"
+        fontWeight : "bold",
+        marginBottom : 5
     },
     stats : {
         flexDirection : "row",

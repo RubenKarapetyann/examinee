@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
         height : 50,
         justifyContent : "center",
         alignItems : "center",
-        backgroundColor : PALETTE.card_background
+        backgroundColor : PALETTE.card_background,
+        borderRadius : 10
     },
     title : {
         fontSize : 19

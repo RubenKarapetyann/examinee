@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         flexWrap : "wrap",
         gap : 20,
         margin : 5,
-        justifyContent : "center"
+        justifyContent : "center",
+        marginTop : 20
     }
 })

@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         width : "100%",
         height : "auto",
         backgroundColor : PALETTE.card_background,
-        borderRadius : 10,
         padding : 5,
         justifyContent : "center",
         alignItems : "center",

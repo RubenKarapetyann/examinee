@@ -41,7 +41,7 @@ export default function useChoose({ data, section, mode, navigation }: useChoose
             statsRef.combo = 0
         }
         setAnswered(variant)
-        if(mode === PROGRESS_MODE && sectionData.reachedNumber <= maxExercises){
+        if(mode === PROGRESS_MODE && sectionData.reachedNumber < maxExercises){
             changeSectionsData(section, {...sectionData, reachedNumber: sectionData.reachedNumber+1})
         }else if(mode === PROGRESS_MODE){
             changeSectionsData(section, {...sectionData, reachedNumber: 0})
