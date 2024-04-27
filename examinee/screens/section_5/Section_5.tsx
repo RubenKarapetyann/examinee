@@ -4,6 +4,7 @@ import data from "../../data/section_5.json"
 import { SEC_5 } from "../../constants/sections";
 import Choose from "../../components/Choose";
 import GoToNextButton from "../../components/GoToNextButton";
+import Banner from "../../ads/Banner";
 
 export default function Section_5({ navigation, route }: Section_5Types){
     const equipment = useChoose({data, section : SEC_5, mode : route.params.mode, navigation})
@@ -22,6 +23,7 @@ export default function Section_5({ navigation, route }: Section_5Types){
                 onChoose={onChoose}
             />
             {answered && <GoToNextButton onGoToNext={onGoToNext}/>}
+            <Banner/>
         </>
     )
 }
