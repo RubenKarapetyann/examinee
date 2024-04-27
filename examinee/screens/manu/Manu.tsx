@@ -7,7 +7,13 @@ import { ManuProps } from "../../types/components";
 import { ModeType, SectionRoute } from "../../types/global";
 import { getItems } from "../../utils/storage";
 import { useSections } from "../../contexts/SectionsProvider";
+import { AppOpenAd, TestIds, AdEventType } from 'react-native-google-mobile-ads';
 
+const adUnitId = __DEV__ ? TestIds.APP_OPEN : 'ca-app-pub-3216522349243958/6425072776';
+
+const appOpenAd = AppOpenAd.createForAdRequest(adUnitId, {
+    keywords: ['education', 'school', 'exam', 'learning'],
+})
 
 export default function Manu({ route, navigation }: ManuProps){
     const [modeWindowOpen, setModeWindowOpen] = useState<false | SectionRoute>(false)
@@ -27,6 +33,13 @@ export default function Manu({ route, navigation }: ManuProps){
             }
         }
         getSectionsInfo()
+        appOpenAd.load() 
+
+        const unsubscribe = appOpenAd.addAdEventListener(AdEventType.LOADED, () => {
+            appOpenAd.show()
+        })
+
+        return unsubscribe;
 
         // navigation.addListener("focus", getSectionsInfo)
         // return ()=> {
