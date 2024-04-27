@@ -1,4 +1,3 @@
-import { StyleSheet, View } from "react-native";
 import { Section_3Types } from "../../types/components";
 import data from "../../data/section_3.json"
 import GoToNextButton from "../../components/GoToNextButton";

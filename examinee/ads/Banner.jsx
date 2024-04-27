@@ -18,5 +18,6 @@ const styles = StyleSheet.create({
     container : {
         position : "absolute",
         bottom : 0,
+        zIndex : 4
     }
 })
