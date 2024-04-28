@@ -10,6 +10,7 @@ path_1 = os.getcwd()+"/repositories/rep_1.pdf"
 path_2 = os.getcwd()+"/repositories/rep_2.pdf"
 path_3 = os.getcwd()+"/repositories/rep_3.pdf"
     
+cut_sample = r"([0-9]+\.)((.+|\n)*?)(a\).+)\n(b\).+)\n(c\).+)\n(d\).+)"
     
 def clear_text(text):
     cleared_text = text
@@ -41,14 +42,16 @@ def get_answers_by_page(path, page):
         print(current_page.extract_text())
         
 
-def tasks_list_from_text(text):
+def tasks_list_from_text_global(text, sample):
     cleared = clear_text(text)
     tasks_list = []
-    reg = re.compile(r"([0-9]+\.)((.+|\n)*?)(a\).+)\n(b\).+)\n(c\).+)\n(d\).+)")
+    reg = re.compile(sample)
     tasks_list = reg.findall(cleared)
 
     return tasks_list
 
+def tasks_list_from_text(text):
+    return tasks_list_from_text_global(text, cut_sample)
 
 def cut_answers(text):
     rep = re.compile(r"[0-9]+\w")
