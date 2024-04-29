@@ -30,7 +30,8 @@ export type DropdownItemProps = {
 export type ManuProps = StackScreenProps<RootStackParamList, "Manu">
 export type Section_3Types = StackScreenProps<RootStackParamList, "Section_3">
 export type Section_5Types = StackScreenProps<RootStackParamList, "Section_5">
- 
+export type Section_10Types = StackScreenProps<RootStackParamList, "Section_10">
+
 export type VariantProps = {
     text : string,
     onChoose : (variant: string)=> void,
