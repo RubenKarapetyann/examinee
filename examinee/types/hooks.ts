@@ -1,10 +1,20 @@
 import { StackNavigationProp } from "@react-navigation/stack"
-import { ChooseExerciseType, ModeType, SectionNames } from "./global"
+import { ChooseExerciseType, ModeType, SectionInfoType, SectionNames, SectionRoute, SentenceExerciseType, StatsType } from "./global"
 import { RootStackParamList } from "./navigation"
 
 export type useChooseProps = {
     data: ChooseExerciseType[],
     section: SectionNames,
     mode: ModeType,
-    navigation : StackNavigationProp<RootStackParamList, "Section_3" | "Section_5", undefined>
+    navigation : StackNavigationProp<RootStackParamList, SectionRoute, undefined>
+}
+export type useSaveProps = {
+    mode: ModeType,
+    section: SectionNames,
+    sectionData: SectionInfoType,
+    navigation: StackNavigationProp<RootStackParamList, SectionRoute, undefined>
+}
+export type useAdsProps = {
+    currentExercise : ChooseExerciseType | SentenceExerciseType,
+    statsRef : StatsType
 }

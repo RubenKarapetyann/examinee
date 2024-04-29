@@ -1,18 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import { useSections } from "../contexts/SectionsProvider"
 import { ChooseExerciseType, StatsType } from "../types/global"
 import { useChooseProps } from "../types/hooks"
 import { PROGRESS_MODE, RANDOM_MODE } from "../constants/modes"
 import { getRandomInt } from "../utils/global"
-import { setItem } from "../utils/storage"
 import { SECTIONS_MAP } from "../constants/sections"
-import { InterstitialAd, AdEventType, TestIds } from 'react-native-google-mobile-ads';
+import useSave from "./useSave"
+import useAds from "./useAds"
 
-const adUnitId = __DEV__ ? TestIds.INTERSTITIAL : 'ca-app-pub-3216522349243958/5668440591';
-
-const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
-  keywords: ['education', 'school', 'exam', 'learning'],
-});
 
 export default function useChoose({ data, section, mode, navigation }: useChooseProps){
     const exercises: ChooseExerciseType[] = data
@@ -26,31 +21,8 @@ export default function useChoose({ data, section, mode, navigation }: useChoose
     const [currentExercise, setCurrentExercise] = useState(mode === RANDOM_MODE ? exercises[getRandomInt(0,maxExercises)] : exercises[sectionData.reachedNumber])
     const [answered, setAnswered] = useState<false | string>(false)
     const statsRef = useRef<StatsType>({combo : 0, count: 0}).current
-    
-
-    useEffect(()=>{
-        const saveProgress = async ()=>{                        
-            if(mode === PROGRESS_MODE){
-                await setItem(section, sectionData)                
-            }
-        }
-
-        navigation.addListener("beforeRemove", saveProgress)
-
-        return ()=> navigation.removeListener("beforeRemove", saveProgress)
-    }, [sectionData])
-
-    useEffect(()=>{
-        const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
-            interstitial.show()
-        })
-
-        if(statsRef.count % 30 === 0 && statsRef.count !== 0){
-            interstitial.load();
-        }
-
-        return unsubscribe
-    },[currentExercise])
+    useSave({mode, section, sectionData, navigation})
+    useAds({statsRef, currentExercise})
 
     const onChoose = (variant: string)=>{
         statsRef.count++
