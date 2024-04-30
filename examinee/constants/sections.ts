@@ -27,9 +27,20 @@ const section_10: CardItem = {
     tasksCount : 470 //500 
 }
 
-export const SECTIONS = [section_3, section_5, section_10]
+export const SEC_8 = "section8"
+const section_8: CardItem = {
+    route : "Section_8",
+    id : "8",
+    title : "Section 8",
+    name : SEC_8,
+    tasksCount : 1000 
+}
+
+
+export const SECTIONS = [section_3, section_5, section_8, section_10]
 export const SECTIONS_MAP = {
     [SEC_3] : section_3,
     [SEC_5] : section_5,
-    [SEC_10] : section_10
+    [SEC_10] : section_10,
+    [SEC_8] : section_8
 }

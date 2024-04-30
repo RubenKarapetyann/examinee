@@ -3,8 +3,8 @@ export type DropdownItem = {
     id : string,
     mode : ModeType
 }
-export type SectionRoute = "Section_3" | "Section_5" | "Section_10"
-export type SectionNames = "section3" | "section5" | "section10"
+export type SectionRoute = "Section_3" | "Section_5" | "Section_10" | "Section_8"
+export type SectionNames = "section3" | "section5" | "section10" | "section8"
 
 export type CardItem = {
     title : string,
