@@ -32,6 +32,7 @@ export type Section_3Types = StackScreenProps<RootStackParamList, "Section_3">
 export type Section_5Types = StackScreenProps<RootStackParamList, "Section_5">
 export type Section_10Types = StackScreenProps<RootStackParamList, "Section_10">
 export type Section_8Types = StackScreenProps<RootStackParamList, "Section_8">
+export type Section_11Types = StackScreenProps<RootStackParamList, "Section_11">
 
 export type VariantProps = {
     text : string,

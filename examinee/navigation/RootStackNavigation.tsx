@@ -5,6 +5,7 @@ import Section_3 from "../screens/section_3/Section_3"
 import Section_5 from "../screens/section_5/Section_5"
 import Section_10 from "../screens/section_10/Section_10"
 import Section_8 from "../screens/section_8/Section_8"
+import Section_11 from "../screens/section_11/Section_11"
 
 const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -33,6 +34,9 @@ export default function RootStackNavigation(){
             }}/>
             <RootStack.Screen name="Section_10" component={Section_10} options={{
                 title : "Section 10"
+            }}/>
+            <RootStack.Screen name="Section_11" component={Section_11} options={{
+                title : "Section 11"
             }}/>
         </RootStack.Navigator>
     )
