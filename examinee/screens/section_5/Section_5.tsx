@@ -5,9 +5,10 @@ import { SEC_5 } from "../../constants/sections";
 import Choose from "../../components/Choose";
 import GoToNextButton from "../../components/GoToNextButton";
 import Banner from "../../ads/Banner";
+import { ChooseExerciseType } from "../../types/global";
 
 export default function Section_5({ navigation, route }: Section_5Types){
-    const equipment = useChoose({data, section : SEC_5, mode : route.params.mode, navigation})
+    const equipment = useChoose<ChooseExerciseType>({data, section : SEC_5, mode : route.params.mode, navigation})
     if(!equipment){
         return
     }

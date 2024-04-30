@@ -7,11 +7,11 @@ export default function Variant({ text, onChoose, variant, correctAnswer, answer
     const bgColor = (answered && correctAnswer === variant) ? PALETTE.succeed : (answered === variant && variant !== correctAnswer) ? PALETTE.fail : PALETTE.card_background
     return (
         <TouchableOpacity style={{...styles.container, backgroundColor: bgColor}} onPress={chooseHandle}>
-            <Text style={styles.text}>{variant + ") " + text}</Text>
+            <Text style={styles.text}>{text}</Text> 
         </TouchableOpacity>
     )
 }
-
+//variant + ") " + 
 const styles = StyleSheet.create({
     container : {
         width : "100%",

@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { useSections } from "../contexts/SectionsProvider"
-import { ChooseExerciseType, StatsType } from "../types/global"
+import { ChooseExerciseType, SentenceExerciseType, StatsType } from "../types/global"
 import { useChooseProps } from "../types/hooks"
 import { PROGRESS_MODE, RANDOM_MODE } from "../constants/modes"
 import { getRandomInt } from "../utils/global"
@@ -9,8 +9,8 @@ import useSave from "./useSave"
 import useAds from "./useAds"
 
 
-export default function useChoose({ data, section, mode, navigation }: useChooseProps){
-    const exercises: ChooseExerciseType[] = data
+export default function useChoose<ExT extends { correct_answer?: string | boolean }>({ data, section, mode, navigation }: useChooseProps<ExT>){
+    const exercises: ExT[] = data
     const maxExercises = SECTIONS_MAP[section].tasksCount
     const sectionsContext = useSections()
     if(sectionsContext === null){
@@ -22,7 +22,7 @@ export default function useChoose({ data, section, mode, navigation }: useChoose
     const [answered, setAnswered] = useState<false | string>(false)
     const statsRef = useRef<StatsType>({combo : 0, count: 0}).current
     useSave({mode, section, sectionData, navigation})
-    useAds({statsRef, currentExercise})
+    useAds<ExT>({statsRef, currentExercise})
 
     const onChoose = (variant: string)=>{
         statsRef.count++

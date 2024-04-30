@@ -22,6 +22,14 @@ export type ChooseExerciseType = {
     repository : number,
     correct_answer : string
 }
+export type SentenceExerciseType = {
+    id : string,
+    number: number,
+    text : string,
+    repository : number,
+    correct_answer : string,
+    self_number : number
+}
 export type Variant = {
     text : string,
     id : string,

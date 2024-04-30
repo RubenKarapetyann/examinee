@@ -24,7 +24,7 @@ const section_10: CardItem = {
     id : "10",
     title : "Section 10",
     name : SEC_10,
-    tasksCount : 100
+    tasksCount : 470 //500 
 }
 
 export const SECTIONS = [section_3, section_5, section_10]

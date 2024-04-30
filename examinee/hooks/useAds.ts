@@ -8,7 +8,7 @@ const interstitial = InterstitialAd.createForAdRequest(adUnitId, {
   keywords: ['education', 'school', 'exam', 'learning'],
 });
 
-export default function useAds({ statsRef, currentExercise }: useAdsProps){
+export default function useAds<ExT>({ statsRef, currentExercise }: useAdsProps<ExT>){
     useEffect(()=>{
         const unsubscribe = interstitial.addAdEventListener(AdEventType.LOADED, () => {
             interstitial.show()
