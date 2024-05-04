@@ -62,3 +62,7 @@ export type ChooseProps = {
     answered : false | string,
     onChoose : (variant: string)=> void
 }
+export type ButtonProps = {
+    icon : string,
+    handle : ()=> void
+}

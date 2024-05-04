@@ -6,23 +6,30 @@ import Section_5 from "../screens/section_5/Section_5"
 import Section_10 from "../screens/section_10/Section_10"
 import Section_8 from "../screens/section_8/Section_8"
 import Section_11 from "../screens/section_11/Section_11"
+import Saved from "../screens/saved/Saved"
+import Button from "../components/Button"
+import { SAVED } from "../constants/navigation"
 
 const RootStack = createStackNavigator<RootStackParamList>()
 
 export default function RootStackNavigation(){
     return (
         <RootStack.Navigator initialRouteName="Manu">
-            <RootStack.Screen name="Manu" component={Manu} options={{ 
+            <RootStack.Screen name="Manu" component={Manu} options={({ navigation })=>({ 
                 title: 'SECTIONS',
-                headerTitleAlign : "center",
                 headerTitleStyle : {
-                    fontSize : 50,
-                    fontFamily : "NunitoSans_900Black"
+                    fontSize : 40,
+                    fontFamily : "NunitoSans_900Black",
+                    marginLeft : 15
+                },
+                headerRightContainerStyle : {
+                    padding : 30
                 },
                 headerStyle : {
                     height : 100,
-                }
-            }}/>
+                },
+                headerRight : ()=> <Button icon="bookmark" handle={()=>{navigation.navigate(SAVED.name)}}/>
+            })}/>
             <RootStack.Screen name="Section_3" component={Section_3} options={{
                 title : "Section 3"
             }}/>
@@ -37,6 +44,9 @@ export default function RootStackNavigation(){
             }}/>
             <RootStack.Screen name="Section_11" component={Section_11} options={{
                 title : "Section 11"
+            }}/>
+            <RootStack.Screen name="Saved" component={Saved} options={{
+                title : SAVED.title
             }}/>
         </RootStack.Navigator>
     )

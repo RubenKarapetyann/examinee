@@ -7,4 +7,5 @@ export type RootStackParamList = {
     Section_10 : { mode: ModeType },
     Section_8 : { mode: ModeType },
     Section_11 : { mode: ModeType },
+    Saved : undefined
 }
