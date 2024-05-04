@@ -17,7 +17,7 @@ export default function RootStackNavigation(){
                 headerTitleAlign : "center",
                 headerTitleStyle : {
                     fontSize : 50,
-                    fontWeight : "bold",
+                    fontFamily : "NunitoSans_900Black"
                 },
                 headerStyle : {
                     height : 100,

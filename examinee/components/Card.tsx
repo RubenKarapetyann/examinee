@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
     title : {
         color : PALETTE.main_text,
         fontSize : 20,
-        fontWeight : "bold",
         marginTop : 10,
-        marginBottom : 30
+        marginBottom : 30,
+        fontFamily : "NunitoSans_700Bold"
     },
     percent : {
         color : PALETTE.succeed,
         fontSize : 18,
-        fontWeight : "bold"
+        fontFamily : "NunitoSans_400Regular"
     }
 })
