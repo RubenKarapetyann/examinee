@@ -20,10 +20,15 @@ const styles = StyleSheet.create({
         padding : 5,
         justifyContent : "center",
         alignItems : "center",
-        minHeight : 50
+        minHeight : 50,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3,
     },
     text : {
         fontSize : 25,
-        color : PALETTE.secondary_text
+        color : PALETTE.main_text
     }
 })

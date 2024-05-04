@@ -4,11 +4,14 @@ import { PALETTE } from "../constants/styles";
 import { LoadingBarProps } from "../types/components";
 
 export default function LoadingBar ({ reached, max }: LoadingBarProps){
-    const len = (reached / max) * 100    
+    const len = (reached / max) * 100
     return (
         <View style={styles.container}>
             <View style={styles.barBackground}>
-                <View style={[styles.bar, {width : `${len}%`}]}></View>
+                <View style={[styles.bar, {
+                    width : `${len}%`, 
+                    backgroundColor : `rgb(${255-Math.floor(reached/max*255)}, ${Math.floor(reached/max*255)}, 0)`
+                }]}></View>
             </View>
         </View>
     )
@@ -23,7 +26,7 @@ const styles = StyleSheet.create({
     },
     barBackground : {
         width : "90%",
-        height : 25,
+        height : 20,
         backgroundColor : "black",
         borderRadius : 20,
         alignItems : "flex-start",
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     },
     bar : {
         backgroundColor : PALETTE.succeed,
-        height : 15,
+        height : 10,
         borderRadius : 17
     }
 })

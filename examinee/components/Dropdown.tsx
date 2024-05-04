@@ -28,13 +28,12 @@ const styles = StyleSheet.create({
     container : { 
         width : 250,
         height : "auto",
-        backgroundColor : "white",
         padding : 5,
         borderRadius : 15
     },
     title : {
         color : "white",
         fontSize : 30,
-        fontWeight : "bold"
+        fontFamily : "NunitoSans_700Bold"
     }
 })

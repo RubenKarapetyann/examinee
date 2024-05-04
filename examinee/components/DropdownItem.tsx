@@ -19,9 +19,15 @@ const styles = StyleSheet.create({
         justifyContent : "center",
         alignItems : "center",
         backgroundColor : PALETTE.card_background,
-        borderRadius : 10
+        borderRadius : 10,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 3
     },
     title : {
-        fontSize : 19
+        fontSize : 19,
+        fontFamily : "NunitoSans_400Regular",
     }
 })
