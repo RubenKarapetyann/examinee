@@ -45,3 +45,4 @@ export type StatsType = {
     count : number,
     combo : number
 }
+export type SaveType = (ChooseExerciseType & { section : SectionNames }) | (SentenceExerciseType & { section : SectionNames })

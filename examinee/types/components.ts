@@ -1,5 +1,5 @@
 import { StackScreenProps } from "@react-navigation/stack"
-import { CardItem, ChooseExerciseType, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant, StatsType } from "./global"
+import { CardItem, ChooseExerciseType, DropdownItem, ModeType, SectionInfoType, SectionRoute, Variant, StatsType, SentenceExerciseType, SectionNames, SaveType } from "./global"
 import { RootStackParamList } from "./navigation"
 import { ReactNode } from "react"
 
@@ -28,6 +28,7 @@ export type DropdownItemProps = {
     mode : ModeType
 }
 export type ManuProps = StackScreenProps<RootStackParamList, "Manu">
+export type SavedProps = StackScreenProps<RootStackParamList, "Saved">
 export type Section_3Types = StackScreenProps<RootStackParamList, "Section_3">
 export type Section_5Types = StackScreenProps<RootStackParamList, "Section_5">
 export type Section_10Types = StackScreenProps<RootStackParamList, "Section_10">
@@ -64,5 +65,16 @@ export type ChooseProps = {
 }
 export type ButtonProps = {
     icon : string,
-    handle : ()=> void
+    handle : ()=> void,
+    width : number,
+    height : number
+}
+export type SaveButtonProps<ExT> = {
+    exercise: ExT | undefined,
+    section: SectionNames
+}
+export type SavedCardProps = {
+    section: SectionNames,
+    exercise: SaveType,
+    handle : (exercise: SaveType)=> void
 }
