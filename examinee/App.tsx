@@ -11,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import "expo-dev-client"
 import * as SplashScreen from "expo-splash-screen"
 import { useCallback, useEffect } from 'react';
+import SavesProvider from './contexts/SavesProvider';
 
 SplashScreen.preventAutoHideAsync()
 
@@ -40,12 +41,13 @@ export default function App() {
   }
 
   return (
-    <SectionsProvider>
-      <NavigationContainer onReady={onLayoutRootView}>
-        <RootStackNavigation/>
-      </NavigationContainer>
-    </SectionsProvider>
-    
+    <SavesProvider>
+      <SectionsProvider>
+        <NavigationContainer onReady={onLayoutRootView}>
+          <RootStackNavigation/>
+        </NavigationContainer>
+      </SectionsProvider>
+    </SavesProvider>
   )
 }
 

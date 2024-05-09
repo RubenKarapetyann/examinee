@@ -2,10 +2,12 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { ButtonProps } from "../types/components";
 import Icon from "react-native-vector-icons/FontAwesome"
 
-export default function Button({ icon, handle }: ButtonProps){
+export default function Button({ icon, handle, width, height }: ButtonProps){
     return  (
-        <TouchableOpacity style={styles.container} onPress={handle}>
-            <Icon name={icon} size={40} color={"black"}/>
+        <TouchableOpacity style={[styles.container, {
+            width, height
+        }]} onPress={handle}>
+            <Icon name={icon} size={width/1.4} color={"black"}/>
         </TouchableOpacity>
     )
 }
@@ -17,8 +19,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         elevation: 3,
-        width : 55,
-        height : 55,
         backgroundColor : "white",
         justifyContent : "center",
         alignItems : "center",
