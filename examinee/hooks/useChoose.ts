@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSections } from "../contexts/SectionsProvider"
 import { ChooseExerciseType, SentenceExerciseType, StatsType } from "../types/global"
 import { useChooseProps } from "../types/hooks"
@@ -7,9 +7,9 @@ import { getRandomInt } from "../utils/global"
 import { SECTIONS_MAP } from "../constants/sections"
 import useSave from "./useSave"
 import useAds from "./useAds"
+import SaveButton from "../components/SaveButton"
 
-
-export default function useChoose<ExT extends { correct_answer?: string | boolean }>({ data, section, mode, navigation }: useChooseProps<ExT>){
+export default function useChoose<ExT extends ChooseExerciseType | SentenceExerciseType>({ data, section, mode, navigation }: useChooseProps<ExT>){
     const exercises: ExT[] = data
     const maxExercises = SECTIONS_MAP[section].tasksCount
     const sectionsContext = useSections()
@@ -23,6 +23,12 @@ export default function useChoose<ExT extends { correct_answer?: string | boolea
     const statsRef = useRef<StatsType>({combo : 0, count: 0}).current
     useSave({mode, section, sectionData, navigation})
     useAds<ExT>({statsRef, currentExercise})
+
+    useEffect(()=>{         
+        navigation.setOptions({
+            headerRight: ()=> SaveButton<ExT>({exercise: currentExercise, section})
+        })
+    },[currentExercise])
 
     const onChoose = (variant: string)=>{
         statsRef.count++
