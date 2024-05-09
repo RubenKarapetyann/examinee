@@ -1,13 +1,15 @@
 import { StyleSheet } from "react-native";
 import { View } from "react-native";
-import { PALETTE } from "../constants/styles";
+import { PALETTE, THEME_PALETTE } from "../constants/styles";
 import { LoadingBarProps } from "../types/components";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function LoadingBar ({ reached, max }: LoadingBarProps){
     const len = (reached / max) * 100
+    const { theme } = useTheme()
     return (
         <View style={styles.container}>
-            <View style={styles.barBackground}>
+            <View style={[styles.barBackground, { backgroundColor : THEME_PALETTE[theme].background_secondary }]}>
                 <View style={[styles.bar, {
                     width : `${len}%`, 
                     backgroundColor : `rgb(${255-Math.floor(reached/max*255)}, ${Math.floor(reached/max*255)}, 0)`

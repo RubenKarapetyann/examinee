@@ -1,13 +1,15 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { VariantProps } from "../types/components";
-import { PALETTE } from "../constants/styles";
+import { PALETTE, THEME_PALETTE } from "../constants/styles";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function Variant({ text, onChoose, variant, correctAnswer, answered }: VariantProps){
     const chooseHandle = ()=> onChoose(variant)
+    const { theme } = useTheme()
     const bgColor = (answered && correctAnswer === variant) ? PALETTE.succeed : (answered === variant && variant !== correctAnswer) ? PALETTE.fail : PALETTE.card_background
     return (
-        <TouchableOpacity style={{...styles.container, backgroundColor: bgColor}} onPress={chooseHandle}>
-            <Text style={styles.text}>{text}</Text> 
+        <TouchableOpacity style={{...styles.container, backgroundColor: (bgColor !== PALETTE.succeed) && (bgColor !== PALETTE.fail) ? THEME_PALETTE[theme].card_background : bgColor}} onPress={chooseHandle}>
+            <Text style={[styles.text, { color : THEME_PALETTE[theme].main_text }]}>{text}</Text> 
         </TouchableOpacity>
     )
 }

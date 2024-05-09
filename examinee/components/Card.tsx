@@ -1,16 +1,19 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { PALETTE } from "../constants/styles";
+import { PALETTE, THEME_PALETTE } from "../constants/styles";
 import { CardProps } from "../types/components";
 import LoadingBar from "./LoadingBar";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function Card({ title, id, onOpen, route, section, tasksCount }:CardProps){
     const reached = section ? section.reachedNumber : 0
+    const { theme } = useTheme()
+
     const openHanle = ()=> onOpen(route)    
     return (
         <View>
-            <TouchableOpacity style={styles.container} onPress={openHanle}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.tasks}>{tasksCount} tasks</Text>
+            <TouchableOpacity style={[styles.container, {backgroundColor : THEME_PALETTE[theme].card_background}]} onPress={openHanle}>
+                <Text style={[styles.title, {color : THEME_PALETTE[theme].main_text}]}>{title}</Text>
+                <Text style={[styles.tasks, {color : THEME_PALETTE[theme].main_text}]}>{tasksCount} tasks</Text>
                 <LoadingBar max={tasksCount} reached={reached}/>
                 <Text style={[styles.percent, { color : `rgb(${255-Math.floor(reached/tasksCount*255)}, ${Math.floor(reached/tasksCount*255)}, 0)` }]}>{section ? Math.floor((section.reachedNumber / tasksCount) * 100) : 0}% completed</Text>
             </TouchableOpacity>

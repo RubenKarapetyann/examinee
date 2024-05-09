@@ -1,18 +1,21 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { PALETTE } from "../constants/styles";
+import { PALETTE, THEME_PALETTE } from "../constants/styles";
 import { SavedCardProps } from "../types/components";
 import { SECTIONS_MAP } from "../constants/sections";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function SavedCard({ section, exercise, handle }: SavedCardProps){    
     const pressHandle = ()=> handle(exercise)
+    const { theme } = useTheme()
+    const palette = THEME_PALETTE[theme]
     return (
-        <TouchableOpacity style={styles.container} onPress={pressHandle}>
+        <TouchableOpacity style={[styles.container, {backgroundColor : palette.card_background}]} onPress={pressHandle}>
             <View>
-                <Text style={styles.title}>{SECTIONS_MAP[section].id}</Text>    
+                <Text style={[styles.title, {color : palette.main_text}]}>{SECTIONS_MAP[section].id}</Text>    
             </View>
             <View>
-                <Text style={styles.number}>exercise✏️: {exercise.number}</Text>
-                <Text style={styles.number}>repository📙: {exercise.repository}</Text>
+                <Text style={[styles.number, {color : palette.main_text}]}>exercise✏️: {exercise.number}</Text>
+                <Text style={[styles.number, {color : palette.main_text}]}>repository📙: {exercise.repository}</Text>
             </View>
         </TouchableOpacity>
     )

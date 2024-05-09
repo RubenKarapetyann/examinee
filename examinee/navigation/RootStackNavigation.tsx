@@ -62,7 +62,6 @@ export default function RootStackNavigation(){
             }}/>
             <RootStack.Screen name="Saved" component={Saved} options={{
                 title : SAVED.title,
-                headerRight : ()=> <Icon name="bookmark" size={30} style={{marginRight : 30}}/>
             }}/>
         </RootStack.Navigator>
     )

@@ -9,11 +9,14 @@ import { SavedProps } from "../../types/components";
 import SaveButton from "../../components/SaveButton";
 import Button from "../../components/Button";
 import Icon from "react-native-vector-icons/FontAwesome"
+import { useTheme } from "../../contexts/ThemeProvider";
+import { THEME_PALETTE } from "../../constants/styles";
 
 
 export default function Saved({ navigation }: SavedProps){
     const [choseExercise, setChoseExercise] = useState<false | ChooseExerciseType | SentenceExerciseType>(false)
     const savesContext = useSaves()
+    const { theme } = useTheme()
     if(!savesContext){
         return
     }
@@ -33,7 +36,7 @@ export default function Saved({ navigation }: SavedProps){
     }
 
     return (
-        <View>
+        <View style={{backgroundColor : THEME_PALETTE[theme].background}}>
             {choseExercise ? 
             <>
                 <Choose

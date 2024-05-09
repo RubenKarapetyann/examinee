@@ -4,7 +4,7 @@ import { SectionsProviderProps } from "../types/components"
 import { ThemeContextType } from "../types/contexts"
 import { DARK, LIGHT } from "../constants/styles"
 
-const ThemeContext = createContext<ThemeContextType | null>(null)
+const ThemeContext = createContext<ThemeContextType>({theme : LIGHT, changeTheme : ()=>{}})
 
 export default function ThemeProvider({ children }: SectionsProviderProps){
     const [theme, setTheme] = useState<ThemeType>("light")

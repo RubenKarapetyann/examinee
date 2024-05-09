@@ -1,28 +1,31 @@
 import { StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 import { ChooseProps } from "../types/components";
-import { PALETTE } from "../constants/styles";
+import { PALETTE, THEME_PALETTE } from "../constants/styles";
 import Form from "./Form";
 import { PROGRESS_MODE } from "../constants/modes";
+import { useTheme } from "../contexts/ThemeProvider";
 
 export default function Choose({exercise, sectionData, mode, stats, answered, onChoose}: ChooseProps){
+    const { theme } = useTheme()
+    const palette = THEME_PALETTE[theme]
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.level}>{mode === PROGRESS_MODE ? `LEVEL ${sectionData.reachedNumber+1}` : "RANDOM"}</Text>
+        <View style={[styles.container, { backgroundColor : palette.background }]}>
+            <View style={[styles.header, { backgroundColor : palette.card_background }]}>
+                <Text style={[styles.level, {color : palette.main_text}]}>{mode === PROGRESS_MODE ? `LEVEL ${sectionData.reachedNumber+1}` : "RANDOM"}</Text>
                 <View style={styles.stats}>
                     <View>
-                        <View style={styles.statsRow}><Text>combo🔥:  </Text><Text style={styles.statsNumber}>{stats.combo}</Text></View>
-                        <View style={styles.statsRow}><Text>done✅️:  </Text><Text style={styles.statsNumber}>{stats.count}</Text></View>
+                        <View style={styles.statsRow}><Text style={{color : palette.main_text}}>combo🔥:  </Text><Text style={[styles.statsNumber, {color : palette.main_text}]}>{stats.combo}</Text></View>
+                        <View style={styles.statsRow}><Text style={{color : palette.main_text}}>done✅️:  </Text><Text style={[styles.statsNumber, {color : palette.main_text}]}>{stats.count}</Text></View>
                     </View>
                     <View>
-                        <View style={styles.statsRow}><Text>repository📙:  </Text><Text style={styles.statsNumber}>{exercise.repository}</Text></View>
-                        <View style={styles.statsRow}><Text>exercise✏️:  </Text><Text style={styles.statsNumber}>{exercise.number}</Text></View>
+                        <View style={styles.statsRow}><Text style={{color : palette.main_text}}>repository📙:  </Text><Text style={[styles.statsNumber, {color : palette.main_text}]}>{exercise.repository}</Text></View>
+                        <View style={styles.statsRow}><Text style={{color : palette.main_text}}>exercise✏️:  </Text><Text style={[styles.statsNumber, {color : palette.main_text}]}>{exercise.number}</Text></View>
                     </View>
                 </View>
             </View>
-            <View style={styles.questionContainer}>
-                <Text style={styles.question}>{exercise.text.trim()}</Text>
+            <View style={[styles.questionContainer, {backgroundColor : palette.card_background}]}>
+                <Text style={[styles.question, {color : palette.main_text}]}>{exercise.text.trim()}</Text>
             </View>
             <Form 
                 variants={exercise.variants} 
