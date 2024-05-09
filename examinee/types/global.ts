@@ -46,3 +46,4 @@ export type StatsType = {
     combo : number
 }
 export type SaveType = (ChooseExerciseType & { section : SectionNames }) | (SentenceExerciseType & { section : SectionNames })
+export type ThemeType = "light" | "dark"

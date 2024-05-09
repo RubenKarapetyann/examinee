@@ -7,3 +7,15 @@ export const PALETTE = {
     fail : "#fc3903",
     shadow : "black"
 }
+
+export const DARK = "dark"
+export const LIGHT = "light"
+
+export const THEME_PALETTE = {
+    [DARK] : {
+
+    },
+    [LIGHT] : {
+        
+    }
+}

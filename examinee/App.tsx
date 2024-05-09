@@ -12,6 +12,7 @@ import "expo-dev-client"
 import * as SplashScreen from "expo-splash-screen"
 import { useCallback, useEffect } from 'react';
 import SavesProvider from './contexts/SavesProvider';
+import ThemeProvider from './contexts/ThemeProvider';
 
 SplashScreen.preventAutoHideAsync()
 
@@ -41,13 +42,15 @@ export default function App() {
   }
 
   return (
-    <SavesProvider>
-      <SectionsProvider>
-        <NavigationContainer onReady={onLayoutRootView}>
-          <RootStackNavigation/>
-        </NavigationContainer>
-      </SectionsProvider>
-    </SavesProvider>
+    <ThemeProvider>
+      <SavesProvider>
+        <SectionsProvider>
+          <NavigationContainer onReady={onLayoutRootView}>
+            <RootStackNavigation/>
+          </NavigationContainer>
+        </SectionsProvider>
+      </SavesProvider>
+    </ThemeProvider>
   )
 }
 
