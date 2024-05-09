@@ -54,7 +54,7 @@ export default function Saved({ navigation }: SavedProps){
                     answered={choseExercise.correct_answer}
                     onChoose={()=>{}}
                 />
-                <View style={styles.buttonContainer}><Button icon="arrow-left" width={75} height={75} handle={backHandle}/></View>
+                <View style={styles.buttonContainer}><Button icon="arrow-back" width={75} height={75} handle={backHandle}/></View>
             </> : 
             <View style={styles.container}><ScrollView style={styles.scroll}>{saves.map(saved=><SavedCard
                 key={saved.id}

@@ -12,6 +12,8 @@ import { SAVED } from "../constants/navigation"
 import SaveButton from "../components/SaveButton"
 import { SEC_10, SEC_11, SEC_3, SEC_5, SEC_8 } from "../constants/sections"
 import Icon from "react-native-vector-icons/FontAwesome"
+import ThemeButton from "../components/ThemeButton"
+import { View } from "react-native"
 
 const RootStack = createStackNavigator<RootStackParamList>()
 
@@ -31,12 +33,12 @@ export default function RootStackNavigation(){
                 headerStyle : {
                     height : 100,
                 },
-                headerRight : ()=> <Button 
+                headerRight : ()=> <View style={{flexDirection : "row", gap : 5}}><ThemeButton/><Button 
                                         icon="bookmark" 
                                         handle={()=>{navigation.navigate(SAVED.name)}}
-                                        width={55}
-                                        height={55}
-                                    />
+                                        width={50}
+                                        height={50}
+                                    /></View>
             })}/>
             <RootStack.Screen name="Section_3" component={Section_3} options={({ navigation })=>({
                 title : "Section 3",

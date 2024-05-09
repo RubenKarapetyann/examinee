@@ -37,7 +37,7 @@ export default function SaveButton<ExT extends ChooseExerciseType | SentenceExer
     return (
         <View style={styles.container}>
             <Button 
-                icon={isCurrentInSaves ? "bookmark" : "bookmark-o"} 
+                icon={isCurrentInSaves ? "bookmark" : "bookmark-outline"} 
                 handle={pressHandle}
                 width={40}
                 height={40}

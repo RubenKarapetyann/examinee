@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { ButtonProps } from "../types/components";
-import Icon from "react-native-vector-icons/FontAwesome"
+import Icon from "react-native-vector-icons/Ionicons"
 
 export default function Button({ icon, handle, width, height }: ButtonProps){
     return  (
