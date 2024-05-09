@@ -31,3 +31,23 @@ export const getItems = async ()=>{
         return false
     }
 }
+
+export const setSavedItem = async (data: object[])=>{
+    try { 
+        await AsyncStorage.setItem("saved", JSON.stringify(data))
+    }catch(err){
+        return false
+    }
+}
+
+export const getSavedItems = async ()=>{
+    try { 
+        const value = await AsyncStorage.getItem("saved")
+        if (value !== null) {
+            return JSON.parse(value)
+        }
+        return null
+    }catch(err){
+        return false
+    }
+}
